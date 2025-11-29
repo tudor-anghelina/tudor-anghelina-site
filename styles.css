@@ -1,0 +1,250 @@
+/* GENERAL RESET */
+  html, body { margin:0; padding:0; width:100%; height:100%; }
+  body {
+    background:#0c0c0c;
+    font-family:'Montserrat', sans-serif;
+    color:#fefefe;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  a { text-decoration:none; color:#C8A45D; transition: color 0.3s ease; }
+  a:hover { color: #e0c070; }
+
+  h1, h2, h3, h4, h5, h6 { margin:0; padding:0; font-weight:300; }
+
+  /* FLOATING NAVIGATION (CENTERED) */
+  .floating-nav {
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(12, 12, 12, 0.6);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding:12px 35px;
+    border-radius:50px;
+    z-index:2000;
+    display:flex;
+    gap:30px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+  }
+  .floating-nav:hover {
+    background:rgba(12, 12, 12, 0.8);
+    border-color: rgba(200, 164, 93, 0.3);
+  }
+  .floating-nav a {
+    color:#fff;
+    font-size:0.85em;
+    text-transform: uppercase;
+    letter-spacing:1.5px;
+    opacity:0.7;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .floating-nav a:hover { opacity:1; color: #C8A45D; }
+  .floating-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -4px;
+    left: 50%;
+    background-color: #C8A45D;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  .floating-nav a:hover::after {
+    width: 100%;
+  }
+
+  /* HERO SECTION */
+  #hero {
+    height:100vh;
+    width:100%;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+  }
+
+  /* Cinematic blurred background */
+  #hero::before {
+    content:"";
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    background-image:url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyFGyXzzz7VQrEfxPFR9OiisSfD2UXSOJlYz5jeEmwIwCX7E1Wb8g_XwlJxeyzKVuLFcMgMjKJQ_n4wyURjRItDPmBc1OeHbwbxT2l1X79REgjbN7FHe0Wgx30dOk3mtQMo4dQpK1u-odVvVkEAxfUYoQCyoZ4wYR9aA-oTlWwJ1NhdgSk8G_FVuidHdw/s16000/Tudor%20Anghelina.jpg');
+    background-size:cover;
+    background-position:center;
+    filter:blur(0px) brightness(0.4);
+    transform:scale(1.1);
+    z-index:0;
+    animation: zoomIn 20s infinite alternate ease-in-out;
+  }
+  
+  @keyframes zoomIn {
+    from { transform: scale(1.1); }
+    to { transform: scale(1.2); }
+  }
+
+  #hero > div {
+    position:relative;
+    z-index:2;
+    padding: 0 20px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out forwards;
+    animation-delay: 0.5s;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  #hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size:5em;
+    color:#C8A45D;
+    letter-spacing:2px;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+  }
+  @media (max-width: 768px) { #hero-title { font-size: 3em; } }
+
+  #hero-tagline {
+    font-size:1.2em;
+    margin-top:15px;
+    color:rgba(255,255,255,0.8);
+    font-weight: 300;
+    letter-spacing: 1px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* SECTION BASE */
+  section {
+    padding:120px 20px;
+    max-width:1100px;
+    margin:0 auto;
+  }
+
+  section h2 {
+    text-align:center;
+    font-family: 'Playfair Display', serif;
+    font-size:3em;
+    color:#C8A45D;
+    letter-spacing:1px;
+    margin-bottom:60px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #C8A45D;
+    margin: 20px auto 0;
+    opacity: 0.6;
+  }
+
+  /* MUSIC LIST */
+  .music-list { list-style:none; padding:0; display: grid; gap: 20px; }
+  .music-list li {
+    background:rgba(255,255,255,0.03);
+    padding:25px 30px;
+    border-radius:12px;
+    font-size:1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .music-list li:hover {
+    background:rgba(255,255,255,0.06);
+    transform: translateY(-5px);
+    border-color: rgba(200, 164, 93, 0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  .music-list li::before {
+    content: '♪';
+    color: #C8A45D;
+    margin-right: 15px;
+    font-size: 1.2em;
+  }
+
+  /* MASONRY GALLERY */
+  .masonry {
+    column-count:3;
+    column-gap:20px;
+  }
+  .masonry img {
+    width:100%;
+    margin-bottom:20px;
+    border-radius:8px;
+    display:block;
+    transition: all 0.4s ease;
+    filter: grayscale(30%);
+  }
+  .masonry img:hover {
+    transform: scale(1.02);
+    filter: grayscale(0%);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    z-index: 2;
+    position: relative;
+  }
+  @media (max-width:900px) { .masonry { column-count:2; } }
+  @media (max-width:600px) { .masonry { column-count:1; } }
+
+  /* ABOUT */
+  #about p {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1em;
+    color: #ddd;
+  }
+
+  /* CONTACT */
+  .contact-info { text-align:center; font-size:1.2em; }
+  .contact-info p { margin-bottom: 20px; color: #ccc; }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  .social-links a {
+    font-size: 1.1em;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 10px 25px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+  }
+  .social-links a:hover {
+    background: #C8A45D;
+    color: #000;
+    border-color: #C8A45D;
+  }
+
+  /* SMOOTH SCROLL */
+  html { scroll-behavior:smooth; }
+
+  /* FOOTER */
+  footer {
+    text-align:center;
+    padding:80px 20px;
+    color:#555;
+    font-size:0.9em;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 50px;
+  }
